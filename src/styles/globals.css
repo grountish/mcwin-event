@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background-color: #04193a;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "poppins-extra-bold";
+  src: url("/fonts/Poppins-ExtraBold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "poppins-bold";
+  src: url("/fonts/Poppins-Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "poppins-semi-bold";
+  src: url("/fonts/Poppins-SemiBold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "poppins-regular";
+  src: url("/fonts/Poppins-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "poppins-light-italic";
+  src: url("/fonts/Poppins-LightItalic.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "poppins-extra-light-italic";
+  src: url("/fonts/Poppins-ExtraLightItalic.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+ul li {
+  list-style: revert;
+}
+
+ul {
+  list-style: unset !important;
+  padding: revert !important;
+}
+
+.swiper-pagination-bullet {
+  background: #1e5ec4 !important;
+  width: 16px !important;
+  height: 16px !important;
+  opacity: 1 !important;
+  transition: all 0.3s !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #04193a !important;
+}
+
+.underlined {
+  display: block;
+  position: relative;
+  padding: 0.1em 0;
+}
+
+/* Fade in */
+.underlined::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: #133F83;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.underlined:hover::after,
+.underlined:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.2em, 0);
+}
+
+/* Slide in */
+.underlined {
+  overflow: hidden;
+}
+
+.underlined::after {
+  opacity: 1;
+  transform: translate3d(-100%, 0, 0);
+}
+
+.underlined:hover::after,
+.underlined:focus::after {
+  transform: translate3d(0, 0, 0);
+}
+
+.fadeOut {
+  animation: fadeOut 1.2s;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(1px) brightness(1);
+  }
+
+  100% {
+    filter: blur(0);
+    transform: scale(1.015);
+    opacity: 0.7 brightness(0.4);
+  }
+}
+
+.fade-into {
+  animation: fadeInTo 1.2s;
+}
+
+@keyframes fadeInTo {
+  0% {
+    opacity: 0.7;
+    transform: scale(1.015);
+    filter: blur(1px) brightness(0.4);
+  }
+
+  100% {
+    filter: blur(0) brightness(1);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+video {
+  object-fit: contain !important;
+}
