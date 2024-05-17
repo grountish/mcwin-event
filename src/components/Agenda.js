@@ -12,27 +12,27 @@ const Agenda = ({ slots }) => {
                 {title}
               </h1>
               <div className='pt-20'>
-                <div className='md:grid grid-cols-3 font-semibold uppercase text-sm text-mainBlue pb-4 hidden'>
-                  <h3>Time</h3>
-                  <h3>Subject</h3>
-                  <h3>Speakers</h3>
+                <div className='md:grid grid-cols-7 font-semibold uppercase text-sm text-mainBlue pb-4 hidden'>
+                  <h3 className='col-span-1'>Time</h3>
+                  <h3 className='col-span-3'>Subject</h3>
+                  <h3 className='col-span-3'>Speakers</h3>
                 </div>
                 {/* desk version */}
                 {events?.map(({ _key, name, time, speaker }) => {
                   return (
                     <div
                       key={_key}
-                      className='hidden md:grid grid-cols-3 pb-4 py-4 fadeInpt-3 border-t border-deepBlue text-sm lg:text-lg'
+                      className='hidden md:grid grid-cols-7 pb-4 py-4 fadeInpt-3 border-t border-deepBlue text-sm lg:text-lg'
                     >
                       <h2
-                        className={`font-semibold ${
+                        className={`font-semibold col-span-1 ${
                           !speaker ? "uppercase text-mainBlue" : "text-deepBlue"
                         }`}
                       >
                         {time}
                       </h2>
                       <h2
-                        className={`${
+                        className={`col-span-3 pr-3 ${
                           !speaker
                             ? "uppercase text-mainBlue font-semibold"
                             : "text-deepBlue"
@@ -40,7 +40,7 @@ const Agenda = ({ slots }) => {
                       >
                         {name}
                       </h2>
-                      <p>{speaker}</p>
+                      <p className='col-span-3'>{speaker}</p>
                     </div>
                   );
                 })}
