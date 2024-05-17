@@ -1,5 +1,6 @@
 import { register } from "@/utils/eventZilla";
 import AgendaMobileSection from "./AgendaMobileSection";
+import BlockContent from "@sanity/block-content-to-react";
 
 const Agenda = ({ slots }) => {
   return (
@@ -40,7 +41,12 @@ const Agenda = ({ slots }) => {
                       >
                         {name}
                       </h2>
-                      <p className='col-span-3'>{speaker}</p>
+                      <div className='col-span-3'>
+                        <BlockContent
+                          blocks={speaker}
+                          className='text-xs lg:text-lg'
+                        />
+                      </div>
                     </div>
                   );
                 })}

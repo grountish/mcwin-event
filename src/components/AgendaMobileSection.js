@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "./Button";
+import BlockContent from "@sanity/block-content-to-react";
 
 const AgendaMobileSection = ({ events }) => {
   const [showAll, setshowAll] = useState(false);
@@ -21,7 +22,12 @@ const AgendaMobileSection = ({ events }) => {
                 >
                   {name}
                 </h2>
-                <p>{speaker}</p>
+                <div>
+                  <BlockContent
+                    blocks={speaker}
+                    className='text-xs lg:text-lg'
+                  />
+                </div>
               </div>
               <h2
                 className={`font-semibold ${
