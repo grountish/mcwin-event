@@ -1,51 +1,61 @@
-import React from "react";
-import Button from "./Button";
 import { register } from "@/utils/eventZilla";
+import AgendaMobileSection from "./AgendaMobileSection";
 
 const Agenda = ({ slots }) => {
   return (
-    <div className="bg-matteWhite">
-      <div className="pt-[60vh] bg-deepBlue">{/* header section here */}</div>
-      <div
-        className={`min-h-screen w-full bg-[url('/agenda-background.svg')] bg-cover flex bg-center bg-no-repeat`}
-      >
-        <div className="flex justify-center items-center m-auto font-regular flex-col bg-matteWhite md:min-w-[700px] p-8 border-deepBlue rounded-2xl border text-deepBlue">
-          <div className="flex justify-between w-full border-b-deepBlue border-b mb-8 text-lg">
-            <div className="w-2/12">Time</div>
-            <div className="w-7/12">Subject</div>
-            <div className="w-3/12 pl-2">Speakers</div>
-          </div>
-          {slots.map(({ _key, title, events }) => {
-            return (
-              <div
-                key={_key}
-                className="border-t-deepBlue border-t w-full py-8"
-              >
-                <h1 className="pb-8">{title}</h1>
-                <div>
-                  {events.map(({ _key, name, time, speaker }) => {
-                    return (
-                      <div key={_key} className="flex pb-8 fadeIn">
-                        <h2 className="w-2/12 font-semibold">{time}</h2>
-                        <h2 className="w-7/12 border-t-deepBlue border-t mr-8 font-ExtralightItalic">
-                          {name}
-                        </h2>
-                        <p className="w-3/12 border-t-deepBlue border-t font-semibold">
-                          {speaker}
-                        </p>
-                      </div>
-                    );
-                  })}
+    <div className='bg-matteWhite pt-12 bg-[url("/bg-agenda.svg")] bg-cover bg-no-repeat'>
+      <div className='flex flex-col justify-center items-start m-auto font-regular lg:border lg:border-deepBlue lg:rounded-3xl text-deepBlue bg-matteWhite lg:w-[950px] lg:py-24'>
+        {slots?.map(({ _key, title, events }) => {
+          return (
+            <div key={_key} className='py-8 md:px-12 px-7 w-full'>
+              <h1 className='pb-2 font-bold text-3xl border-b border-deepBlue'>
+                {title}
+              </h1>
+              <div className='pt-20'>
+                <div className='md:grid grid-cols-3 font-semibold uppercase text-sm text-mainBlue pb-4 hidden'>
+                  <h3>Time</h3>
+                  <h3>Subject</h3>
+                  <h3>Speakers</h3>
                 </div>
+                {/* desk version */}
+                {events?.map(({ _key, name, time, speaker }) => {
+                  return (
+                    <div
+                      key={_key}
+                      className='hidden md:grid grid-cols-3 pb-4 py-4 fadeInpt-3 border-t border-deepBlue text-sm lg:text-lg'
+                    >
+                      <h2
+                        className={`font-semibold ${
+                          !speaker ? "uppercase text-mainBlue" : "text-deepBlue"
+                        }`}
+                      >
+                        {time}
+                      </h2>
+                      <h2
+                        className={`${
+                          !speaker
+                            ? "uppercase text-mainBlue font-semibold"
+                            : "text-deepBlue"
+                        }`}
+                      >
+                        {name}
+                      </h2>
+                      <p>{speaker}</p>
+                    </div>
+                  );
+                })}
+                {/* mobile version */}
+                <AgendaMobileSection events={events} />
               </div>
-            );
-          })}
-          <div className="border-t border-t-deepBlue w-full flex fadeIn">
-            <div onClick={register} className="m-auto">
-              <Button
-                title="Register"
-                classes="!border-deepBlue border-2 mt-8 !text-deepBlue !hover:text-red-400"
-              />
+            </div>
+          );
+        })}
+        <div className='w-full flex fadeIn py-20'>
+          <div onClick={register} className='m-auto'>
+            <div
+              className={`flex items-center lg:px-20 px-7 lg:py-5 py-3 w-max transition duration-300 rounded-full font-poppinsExtraBold lg:text-xl text-base cursor-pointer hover:drop-shadow-md z-50 border-mainBlue border-2 text-mainBlue hover:bg-mainBlue hover:text-gray-100`}
+            >
+              Register now
             </div>
           </div>
         </div>
