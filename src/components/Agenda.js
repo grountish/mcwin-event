@@ -50,7 +50,7 @@ const Agenda = ({ slots }) => {
                     </div>
                   );
                 })}
-                {/* mobile version */}
+                {/* agenda mobile version */}
                 <AgendaMobileSection events={events} />
               </div>
             </div>
